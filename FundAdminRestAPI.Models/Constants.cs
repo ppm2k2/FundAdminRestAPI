@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FundAdminRestAPI.Models
+{
+    public static class Constants
+    {
+        public const string APPLICATION_NAME = "FundAdmin.FundAdminRestAPI";
+        public const string API_PATH_BASE = "Services.FundAdminRestAPI";
+        public const string SWAGGER = "Sswagger";
+        public const string INDEX = "index.html";
+        public const string CONFIGURATION = "UiConfiguration";
+        public const string JSONURL = @"C:\Source\GIT\Repos\FundAdminRestAPI\FundAdminRestAPI.Console\Data\Portfolio.json";
+
+        public const string BTC_TICKER = "BTC";
+        public const string ETH_TICKER = "ETH";
+        public const string AAVE_TICKER = "AAVE";
+        public const string SOL_TICKER = "SOL";
+
+    }
+}
