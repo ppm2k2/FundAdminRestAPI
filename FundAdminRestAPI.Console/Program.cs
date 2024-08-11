@@ -5,19 +5,19 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
 
-namespace MyApp
+namespace FundAdmin
 {
     internal class Program
     {
         static async Task Main(string[] args)
         {
-            var timer = new PeriodicTimer(TimeSpan.FromSeconds(10)); 
+            var timer = new PeriodicTimer(TimeSpan.FromSeconds(60));
 
-            while (await timer.WaitForNextTickAsync())
+            do
             {
-                FundAdminBL fileAdminBL  = new FundAdminBL();
+                FundAdminBL fileAdminBL = new FundAdminBL();
                 _ = fileAdminBL.GetFundPL();
-            }
+            } while (await timer.WaitForNextTickAsync());
         }
     }
 }
