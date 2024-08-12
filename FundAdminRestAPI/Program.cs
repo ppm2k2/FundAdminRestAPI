@@ -11,10 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-
-
-
-
 // Configure the HTTP request pipeline.
 /*if (!app.Environment.IsDevelopment())
 {
@@ -35,18 +31,46 @@ builder.Services.AddCors( options =>
 });
 
 
-
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddSwaggerGen(config =>
+{
+config.AddSecurityDefinition("bearerAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme()
+{
+    Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+    Scheme = "bearer",
+    BearerFormat = "JWT",
+    Description = "JWT Authorization header"
+});
+
+config.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement{
+    {
+        new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+        {
+            Reference = new Microsoft.OpenApi.Models.OpenApiReference
+            {
+                Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                Id="bearerAuth"
+            }
+        },
+        new string[]{ }
+    }});
+
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+});
 
 builder.Services.AddMemoryCache();
+
+
 
 //builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<IFundAdminBL, FundAdminBL>();
 
 var app = builder.Build();
-
-
 
 
 
@@ -79,6 +103,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapFundServiceEndpoints();
 
