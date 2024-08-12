@@ -7,7 +7,7 @@ namespace FundAdminRestAPI.EndPoints
     {
         public static void MapFundServiceEndpoints(this WebApplication app)
         {
-            app.MapGet("/FundService/GetFundList", async ([FromServices] IFundAdminBL FundBL) =>
+            app.MapGet("/FundService/GetFundPL", async ([FromServices] IFundAdminBL FundBL) =>
             {
                 return await FundBL.GetFundPL();
             });
