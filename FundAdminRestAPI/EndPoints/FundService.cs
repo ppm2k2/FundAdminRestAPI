@@ -10,7 +10,7 @@ namespace FundAdminRestAPI.EndPoints
             app.MapGet("/FundService/GetFundList", async ([FromServices] IFundAdminBL FundBL) =>
             {
                 return await FundBL.GetFundPL();
-            }).RequireAuthorization();
+            });
         }
     }
 }

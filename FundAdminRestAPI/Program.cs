@@ -104,8 +104,8 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.UseAuthentication();
-app.UseAuthorization();
+//app.UseAuthentication();
+//app.UseAuthorization();
 
 app.MapFundServiceEndpoints();
 

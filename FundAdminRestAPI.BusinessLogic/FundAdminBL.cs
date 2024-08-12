@@ -34,7 +34,7 @@ namespace FundAdminRestAPI.BusinessLogic
             if (_fundRepository != null)
                 fundResponse = _fundRepository.GetFundPL();
             else
-                _fundRepo.GetFundPL();
+                fundResponse = _fundRepo.GetFundPL();
 
             result.Result = fundResponse;
             result.ServiceReponse.IsSuccessful = true;
